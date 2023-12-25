@@ -21,6 +21,7 @@ export default function Input({ label, name, type, placeholder }: Props) {
 
         <div className="relative">
           <input
+            required
             type={
               type === "password" && !isRevealed
                 ? "password"

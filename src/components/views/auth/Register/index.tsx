@@ -1,3 +1,4 @@
+import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -80,14 +81,9 @@ export default function RegisterView() {
               type="password"
               placeholder="Password"
             />
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className={`block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white disabled:bg-indigo-400`}
-            >
+            <Button variant="primary" disabled={isLoading} type="submit">
               {isLoading ? "Registering..." : "Register"}
-            </button>
+            </Button>
 
             <p className="text-center text-sm text-gray-500">
               Already Have account?

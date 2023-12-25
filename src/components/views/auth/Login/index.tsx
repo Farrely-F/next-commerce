@@ -1,3 +1,4 @@
+import { FailedAlert } from "@/components/ui/Alert";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { signIn } from "next-auth/react";
@@ -63,14 +64,24 @@ export default function LoginView() {
               type="email"
               placeholder="Enter email"
             />
+            {error === "Invalid Email" && (
+              <span className="text-red-500 mx-auto text-center mt-4 text-xs ml-4">
+                {error}
+              </span>
+            )}
             <Input
               label="Password"
               name="password"
               type="password"
               placeholder="Enter password"
             />
+            {error === "Invalid Password" && (
+              <span className="text-red-500 mx-auto text-center mt-4 text-xs ml-4">
+                {error}
+              </span>
+            )}
 
-            <Button variant="primary" type="submit" isLoading={isLoading}>
+            <Button variant="primary" type="submit" disabled={isLoading}>
               {isLoading ? "Signing In ..." : "Sign In"}
             </Button>
             <div className="border-t border-b border-slate-200"></div>
@@ -120,9 +131,8 @@ export default function LoginView() {
               </Link>
             </p>
           </form>
-          {error && (
-            <p className="text-red-500 mx-auto text-center mt-4">{error}</p>
-          )}
+
+          {error && <FailedAlert />}
         </div>
       </div>
     </>

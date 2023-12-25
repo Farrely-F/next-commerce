@@ -3,7 +3,7 @@ type Props = {
   variant: "primary" | "outline";
   children: React.ReactNode;
   onClick?: () => void;
-  isLoading?: boolean;
+  disabled?: boolean;
 };
 
 export default function Button({
@@ -11,19 +11,17 @@ export default function Button({
   variant,
   children,
   onClick,
-  isLoading,
+  disabled,
 }: Props) {
   return (
     <>
       <button
-        disabled={isLoading}
-        className={`w-full rounded-lg px-5 py-3 text-sm font-medium flex justify-center items-center gap-4 ${
+        disabled={disabled}
+        className={`w-full rounded-lg px-5 py-3 text-sm font-medium flex justify-center items-center gap-4 disabled:bg-indigo-400 ${
           variant === "primary"
             ? "bg-blue-700 text-white"
             : variant === "outline"
             ? "border border-blue-700 text-blue-700"
-            : isLoading === true
-            ? "bg-blue-400"
             : ""
         } `}
         type={type}

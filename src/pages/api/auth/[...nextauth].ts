@@ -1,4 +1,4 @@
-import { loginWithGoogle, signIn } from "@/lib/firebase/service";
+import { loginWithGoogle, signIn } from "@/services/auth";
 import { compare } from "bcrypt";
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
@@ -53,7 +53,7 @@ const authOptions: NextAuthOptions = {
       }
 
       if (account?.provider === "google") {
-        const data = {
+        const data: any = {
           fullname: user.name,
           email: user.email,
           type: "google",

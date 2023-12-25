@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { signUp } from "@/lib/firebase/service";
+import { signUp } from "@/services/auth";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,13 +12,11 @@ export default async function handler(
           .status(200)
           .json({ status: true, statusCode: 200, message: "Register Success" });
       } else {
-        res
-          .status(400)
-          .json({
-            status: false,
-            statusCode: 400,
-            message: "Failed to Register",
-          });
+        res.status(400).json({
+          status: false,
+          statusCode: 400,
+          message: "Failed to Register",
+        });
       }
     });
   } else {
